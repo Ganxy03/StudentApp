@@ -1,5 +1,8 @@
 package ui;
 
+import db.DBConnection;
+import org.w3c.dom.ls.LSOutput;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -11,9 +14,9 @@ import java.sql.*;
 
 public class HomeFrame extends JFrame{
 
-    private String URL = "";
-    private String USERNAME = "";
-    private String PASSWORD = "";
+//    private String URL = "";
+//    private String USERNAME = "";
+//    private String PASSWORD = "";
     private JPanel content_card;
     private CardLayout cardLayout;
 
@@ -130,8 +133,11 @@ public class HomeFrame extends JFrame{
 
                 String sql = "SELECT * FROM grade";
                 ResultSet resultSet = null;
-                try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                     PreparedStatement stmt = conn.prepareStatement(sql)) {
+                try (
+//                        Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                        Connection connection = DBConnection.getInstance().getConnection();
+
+                        PreparedStatement stmt = connection.prepareStatement(sql)) {
                     resultSet = stmt.executeQuery();
 
                     JPanel tablePanel = new JPanel();

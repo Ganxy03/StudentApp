@@ -1,5 +1,7 @@
 package ui;
 
+import db.DBConnection;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -183,14 +185,15 @@ public class toUpdateFrame extends JFrame {
 
     public void updateDataInDatabase() {
 
-        String url = "";
-        String user = "";
-        String password = "";
+//        String url = "";
+//        String user = "";
+//        String password = "";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
-            connection = DriverManager.getConnection(url, user, password);
+//            connection = DriverManager.getConnection(url, user, password);
+            connection = DBConnection.getInstance().getConnection();
 
             String sql = "UPDATE grade SET 名字 = ?, 性别 = ?, 班级 = ?, 修读课程 = ?, 未通过课程 = ?, 修读学分 = ?, 获得学分 = ?, 绩点 = ?, 学分绩点 = ?, 平均学分绩点 = ?,加权平均成绩 = ?,平均成绩 = ?,总成绩 = ? where 学号 = '" + snoField.getText() + "'";
             preparedStatement = connection.prepareStatement(sql);

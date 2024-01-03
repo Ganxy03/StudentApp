@@ -1,6 +1,8 @@
 // UpdateFrame.java
 package ui;
 
+import db.DBConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,13 +28,14 @@ public class UpdateFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int id = Integer.parseInt(idField.getText());
-                String url = "";
-                String user = "";
-                String password = "";
+//                String url = "";
+//                String user = "";
+//                String password = "";
 
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection connection = DriverManager.getConnection(url, user, password);
+//                    Connection connection = DriverManager.getConnection(url, user, password);
+                    Connection connection = DBConnection.getInstance().getConnection();
                     String sql = "SELECT * FROM grade WHERE id = ?";
                     PreparedStatement preparedStatement = connection.prepareStatement(sql);
                     preparedStatement.setInt(1, id);

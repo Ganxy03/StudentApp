@@ -1,5 +1,7 @@
 package ui;
 
+import db.DBConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -69,9 +71,9 @@ public class InitRegisterFrame extends JFrame {
         registerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = "t";
-                String user = "";
-                String pwd = "";
+//                String url = "t";
+//                String user = "";
+//                String pwd = "";
 
                 String username = userField.getText();
                 String password = new String(pwdField.getPassword());
@@ -91,7 +93,8 @@ public class InitRegisterFrame extends JFrame {
                 PreparedStatement preparedStatement = null;
 
                 try {
-                    connection = DriverManager.getConnection(url, user, pwd);
+//                    connection = DriverManager.getConnection(url, user, pwd);
+                    connection = DBConnection.getInstance().getConnection();
                     String sql = "INSERT INTO user (name, pwd) VALUES (?, ?)";
                     preparedStatement = connection.prepareStatement(sql);
                     preparedStatement.setString(1, username);

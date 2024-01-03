@@ -1,5 +1,7 @@
 package ui;
 
+import db.DBConnection;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -28,7 +30,8 @@ public class TestFrame extends JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // 建立数据库连接
-            Connection connection = DriverManager.getConnection("", "", "");
+//            Connection connection = DriverManager.getConnection("", "", "");
+            Connection connection = DBConnection.getInstance().getConnection();
 
             // 创建Statement对象
             Statement statement = connection.createStatement();

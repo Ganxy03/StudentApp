@@ -6,7 +6,7 @@ import ui.TestFrame;
 
 public class StudentApp {
     public static void main(String[] arg) {
-        new InitLoginFrame().setVisible(true);
-//        new HomeFrame().setVisible(true);
+//        new InitLoginFrame().setVisible(true);
+        new HomeFrame().setVisible(true);
     }
 }

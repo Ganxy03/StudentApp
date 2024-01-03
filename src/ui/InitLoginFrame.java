@@ -1,6 +1,8 @@
 package ui;
 
 
+import db.DBConnection;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,9 +17,9 @@ public class InitLoginFrame extends JFrame {
     private JButton loginBtn;
     private JButton resetBtn;
     private JButton registerBtn;
-    private String URL = "";
-    private String USERNAME = "";
-    private String PASSWORD = "";
+//    private String URL = "";
+//    private String USERNAME = "";
+//    private String PASSWORD = "";
 
     public InitLoginFrame() {
 
@@ -64,8 +66,10 @@ public class InitLoginFrame extends JFrame {
                 String sql = "SELECT * FROM user WHERE name = ? AND pwd = ?";
 
                 ResultSet resultSet = null;
-                try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                     PreparedStatement stmt = conn.prepareStatement(sql)) {
+                try (
+//                        Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                    Connection connection = DBConnection.getInstance().getConnection();
+                        PreparedStatement stmt = connection.prepareStatement(sql)) {
                     stmt.setString(1, user);
                     stmt.setString(2, pwd);
                     resultSet = stmt.executeQuery();

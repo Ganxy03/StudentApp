@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="StudentApp:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/StudentApp_jar</output-path>
+    <root id="archive" name="StudentApp.jar">
+      <element id="module-output" name="StudentApp" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/.idea/lib/mysql-connector-j-8.2.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
